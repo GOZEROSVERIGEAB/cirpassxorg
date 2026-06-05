@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIRPASSX - One Pager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        html, body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 11px;
+            line-height: 1.5;
+            color: #1a1a1a;
+            background: #f5f5f5;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            max-height: 297mm;
+            margin: 0 auto;
+            background: white;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        @media print {
+            body { background: white; }
+            .page {
+                box-shadow: none;
+                margin: 0;
+            }
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1a5235 0%, #0d3a24 100%);
+            color: white;
+            padding: 24px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-sub {
+            font-size: 11px;
+            font-weight: 500;
+            opacity: 0.9;
+            margin-top: 2px;
+        }
+
+        .header-badge {
+            background: rgba(255,255,255,0.15);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Hero */
+        .hero {
+            background: #f8faf9;
+            padding: 24px 32px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .hero-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a5235;
+            margin-bottom: 8px;
+        }
+
+        .hero-text {
+            font-size: 12px;
+            color: #4b5563;
+            max-width: 90%;
+            line-height: 1.6;
+        }
+
+        /* Main content */
+        .content {
+            padding: 24px 32px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .section-title {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #1a5235;
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid #10b981;
+            display: inline-block;
+        }
+
+        /* Benefits */
+        .benefits {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .benefit {
+            text-align: center;
+            padding: 16px 12px;
+            background: linear-gradient(180deg, #f0fdf4 0%, #ffffff 100%);
+            border-radius: 10px;
+            border: 1px solid #d1fae5;
+        }
+
+        .benefit-icon {
+            width: 36px;
+            height: 36px;
+            background: #1a5235;
+            border-radius: 8px;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .benefit-title {
+            font-weight: 700;
+            font-size: 11px;
+            color: #1a5235;
+            margin-bottom: 4px;
+        }
+
+        .benefit-text {
+            font-size: 9px;
+            color: #6b7280;
+            line-height: 1.4;
+        }
+
+        /* Features list */
+        .features-list {
+            list-style: none;
+        }
+
+        .features-list li {
+            padding: 6px 0;
+            padding-left: 20px;
+            position: relative;
+            font-size: 10px;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .features-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: 700;
+        }
+
+        /* Standards */
+        .standards-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .standard-item {
+            background: #f9fafb;
+            padding: 8px 10px;
+            border-radius: 6px;
+            font-size: 9px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .standard-item strong {
+            color: #1a5235;
+            display: block;
+            font-size: 10px;
+        }
+
+        /* Use cases */
+        .use-cases {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .use-case {
+            background: #1a5235;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 9px;
+            font-weight: 500;
+        }
+
+        /* Grading scale */
+        .grade-scale {
+            display: flex;
+            gap: 4px;
+            margin-top: 8px;
+        }
+
+        .grade {
+            flex: 1;
+            text-align: center;
+            padding: 8px 4px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        .grade-a { background: #dcfce7; color: #166534; }
+        .grade-b { background: #d1fae5; color: #15803d; }
+        .grade-c { background: #fef9c3; color: #a16207; }
+        .grade-d { background: #fed7aa; color: #c2410c; }
+        .grade-f { background: #fecaca; color: #b91c1c; }
+
+        .grade span {
+            display: block;
+            font-size: 7px;
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        /* Open Source Banner */
+        .opensource-banner {
+            background: linear-gradient(135deg, #1a5235 0%, #0d3a24 100%);
+            color: white;
+            padding: 18px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+        }
+
+        .opensource-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.1);
+            padding: 10px 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .opensource-icon {
+            font-size: 20px;
+        }
+
+        .opensource-text {
+            font-size: 11px;
+        }
+
+        .opensource-text strong {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .license-badge {
+            background: #10b981;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 16px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #e5e7eb;
+            font-size: 9px;
+            color: #6b7280;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .footer-links a {
+            color: #1a5235;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-right {
+            text-align: right;
+            color: #1a5235;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- Header -->
+        <header class="header">
+            <div>
+                <div class="logo">CIRPASSX</div>
+                <div class="logo-sub">Circular Product Passport Exchange Standard</div>
+            </div>
+            <div class="header-badge">Open Source · MIT License · v1.0</div>
+        </header>
+
+        <!-- Hero -->
+        <section class="hero">
+            <h1 class="hero-title">The Universal Language for Secondhand Products</h1>
+            <p class="hero-text">
+                CIRPASSX is an open data standard enabling seamless exchange of product information between
+                reuse actors, marketplaces, and circular economy platforms. Built for EU Digital Product Passport
+                compliance and the Right to Repair directive.
+            </p>
+        </section>
+
+        <!-- Main Content -->
+        <main class="content">
+            <!-- Benefits -->
+            <div class="benefits">
+                <div class="benefit">
+                    <div class="benefit-icon">🔄</div>
+                    <div class="benefit-title">Interoperability</div>
+                    <div class="benefit-text">One format works across all systems and platforms</div>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">🇪🇺</div>
+                    <div class="benefit-title">EU Compliant</div>
+                    <div class="benefit-text">Ready for DPP and Right to Repair regulations</div>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">📊</div>
+                    <div class="benefit-title">Full Traceability</div>
+                    <div class="benefit-text">Track products through entire lifecycle</div>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">🌱</div>
+                    <div class="benefit-title">Sustainability</div>
+                    <div class="benefit-text">Enable circular economy at scale</div>
+                </div>
+            </div>
+
+            <!-- Left Column -->
+            <div>
+                <h2 class="section-title">Key Features</h2>
+                <ul class="features-list">
+                    <li>JSON-LD format with Schema.org vocabulary</li>
+                    <li>W3C Verifiable Credentials envelope</li>
+                    <li>Standardized condition grading (A-F)</li>
+                    <li>Lifecycle event tracking (EPCIS 2.0)</li>
+                    <li>Repairability scoring (EN45554)</li>
+                    <li>Spare parts information</li>
+                    <li>Material composition & recycled content</li>
+                    <li>GS1 Digital Link identifiers</li>
+                </ul>
+
+                <h2 class="section-title" style="margin-top: 16px;">Condition Grading</h2>
+                <div class="grade-scale">
+                    <div class="grade grade-a">A<span>Excellent</span></div>
+                    <div class="grade grade-b">B<span>Very Good</span></div>
+                    <div class="grade grade-c">C<span>Good</span></div>
+                    <div class="grade grade-d">D<span>Fair</span></div>
+                    <div class="grade grade-f">F<span>Parts</span></div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div>
+                <h2 class="section-title">Standards Compatibility</h2>
+                <div class="standards-grid">
+                    <div class="standard-item">
+                        <strong>EU DPP</strong>
+                        Digital Product Passport (ESPR)
+                    </div>
+                    <div class="standard-item">
+                        <strong>UNTP</strong>
+                        UN Transparency Protocol
+                    </div>
+                    <div class="standard-item">
+                        <strong>GS1</strong>
+                        Digital Link & EPCIS 2.0
+                    </div>
+                    <div class="standard-item">
+                        <strong>W3C VC</strong>
+                        Verifiable Credentials 2.0
+                    </div>
+                </div>
+
+                <h2 class="section-title" style="margin-top: 16px;">Product Categories</h2>
+                <div class="use-cases">
+                    <span class="use-case">Electronics</span>
+                    <span class="use-case">Furniture</span>
+                    <span class="use-case">Appliances</span>
+                    <span class="use-case">Textiles</span>
+                    <span class="use-case">Vehicles</span>
+                    <span class="use-case">Tools</span>
+                    <span class="use-case">Building Materials</span>
+                    <span class="use-case">Sports Equipment</span>
+                </div>
+
+                <h2 class="section-title" style="margin-top: 16px;">Who Is It For?</h2>
+                <ul class="features-list">
+                    <li>Reuse centers & charity shops</li>
+                    <li>Online marketplaces</li>
+                    <li>Repair service providers</li>
+                    <li>Manufacturers with take-back programs</li>
+                    <li>Municipal recycling centers</li>
+                    <li>Circular economy platforms</li>
+                </ul>
+            </div>
+        </main>
+
+        <!-- Open Source Banner -->
+        <section class="opensource-banner">
+            <div class="opensource-badge">
+                <span class="opensource-icon">📖</span>
+                <div class="opensource-text">
+                    <strong>100% Open Source</strong>
+                    Free to use, implement, and extend
+                </div>
+            </div>
+            <div class="opensource-badge">
+                <span class="opensource-icon">⚖️</span>
+                <div class="opensource-text">
+                    <strong>MIT Licensed</strong>
+                    No restrictions, commercial use allowed
+                </div>
+            </div>
+            <div class="opensource-badge">
+                <span class="opensource-icon">🌐</span>
+                <div class="opensource-text">
+                    <strong>GitHub Available</strong>
+                    github.com/GOZEROSVERIGEAB/cirpassxorg
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-links">
+                <span>cirpassx.org</span>
+                <span>github.com/GOZEROSVERIGEAB/cirpassxorg</span>
+                <span>contact@cirpassx.org</span>
+            </div>
+            <div class="footer-right">
+                Open Standard for Circular Economy
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
