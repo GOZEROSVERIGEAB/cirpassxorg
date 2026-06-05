@@ -1,0 +1,52 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://schema.org/",
+    "https://cirpassx.org/v1/context.jsonld"
+  ],
+  "type": ["VerifiableCredential", "CircularProductPassport"],
+  "id": "urn:uuid:a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+
+  "issuer": {
+    "@type": "Organization",
+    "name": "My Reuse Shop"
+  },
+
+  "issuanceDate": "2026-06-05T12:00:00Z",
+
+  "credentialSubject": {
+    "@type": "Product",
+    "id": "urn:uuid:a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+
+    "identifier": [
+      {
+        "@type": "PropertyValue",
+        "propertyID": "CIRPASSX_ID",
+        "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+      }
+    ],
+
+    "name": "Office Chair",
+
+    "category": [
+      {
+        "@type": "CategoryCode",
+        "codeValue": "56101500",
+        "codingSystem": "UNSPSC",
+        "name": "Office chairs"
+      }
+    ],
+
+    "itemCondition": {
+      "@type": "OfferItemCondition",
+      "name": "UsedCondition",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "propertyID": "CIRPASSX_CONDITION_GRADE",
+          "value": "B"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,945 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cirpassx.org/schema/v1/product.schema.json",
+  "title": "CIRPASSX Product",
+  "description": "Circular Product Passport Exchange Standard - Product Schema v1.0",
+  "type": "object",
+  "required": [
+    "@context",
+    "type",
+    "id",
+    "issuer",
+    "issuanceDate",
+    "credentialSubject"
+  ],
+  "properties": {
+    "@context": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "contains": {
+        "const": "https://cirpassx.org/v1/context.jsonld"
+      },
+      "description": "JSON-LD context URIs, must include CIRPASSX context"
+    },
+    "type": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "contains": {
+        "const": "CircularProductPassport"
+      },
+      "description": "Credential types, must include CircularProductPassport"
+    },
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "description": "Unique identifier as UUID URN"
+    },
+    "issuer": {
+      "$ref": "#/$defs/Organization",
+      "description": "Organization issuing this passport"
+    },
+    "issuanceDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 datetime when passport was issued"
+    },
+    "validFrom": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 datetime when passport becomes valid"
+    },
+    "validUntil": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 datetime when passport expires"
+    },
+    "credentialSubject": {
+      "$ref": "#/$defs/Product",
+      "description": "The product this passport describes"
+    }
+  },
+  "$defs": {
+    "Organization": {
+      "type": "object",
+      "required": ["@type", "name"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "Organization"
+        },
+        "id": {
+          "type": "string",
+          "format": "uri",
+          "description": "DID or URI identifying the organization"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Legal name of the organization"
+        },
+        "identifier": {
+          "$ref": "#/$defs/PropertyValue",
+          "description": "Business identifier (GLN, VAT, etc.)"
+        },
+        "address": {
+          "$ref": "#/$defs/PostalAddress"
+        }
+      }
+    },
+    "Product": {
+      "type": "object",
+      "required": [
+        "@type",
+        "id",
+        "identifier",
+        "name",
+        "category",
+        "itemCondition"
+      ],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "Product"
+        },
+        "id": {
+          "type": "string",
+          "format": "uri",
+          "description": "Unique product identifier as URI"
+        },
+        "identifier": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PropertyValue"
+          },
+          "minItems": 1,
+          "description": "Product identifiers (CIRPASSX_ID required, GTIN recommended)"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200,
+          "description": "Product name"
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 2000,
+          "description": "Product description"
+        },
+        "brand": {
+          "$ref": "#/$defs/Brand"
+        },
+        "model": {
+          "type": "string",
+          "description": "Model name or number"
+        },
+        "manufacturer": {
+          "$ref": "#/$defs/Organization"
+        },
+        "productionDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Original manufacturing date (ISO 8601)"
+        },
+        "category": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CategoryCode"
+          },
+          "minItems": 1,
+          "description": "Product classification (UNSPSC, ECLASS, etc.)"
+        },
+        "itemCondition": {
+          "$ref": "#/$defs/ItemCondition",
+          "description": "Product condition assessment"
+        },
+        "conditionAssessment": {
+          "$ref": "#/$defs/ConditionAssessment",
+          "description": "Detailed condition assessment"
+        },
+        "repairabilityScore": {
+          "$ref": "#/$defs/RepairabilityScore",
+          "description": "EN45554 compliant repairability assessment"
+        },
+        "repairInformation": {
+          "$ref": "#/$defs/RepairInformation",
+          "description": "Repair documentation and spare parts info"
+        },
+        "spareParts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SparePart"
+          },
+          "description": "Available spare parts"
+        },
+        "lifecycleHistory": {
+          "$ref": "#/$defs/LifecycleHistory",
+          "description": "Product lifecycle events"
+        },
+        "usageHistory": {
+          "$ref": "#/$defs/UsageHistory",
+          "description": "Usage metrics"
+        },
+        "weight": {
+          "$ref": "#/$defs/QuantitativeValue"
+        },
+        "width": {
+          "$ref": "#/$defs/QuantitativeValue"
+        },
+        "height": {
+          "$ref": "#/$defs/QuantitativeValue"
+        },
+        "depth": {
+          "$ref": "#/$defs/QuantitativeValue"
+        },
+        "additionalProperty": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PropertyValue"
+          },
+          "description": "Category-specific properties"
+        },
+        "material": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Material"
+          },
+          "description": "Material composition"
+        },
+        "hasCertification": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Certification"
+          },
+          "description": "Product certifications (CE, RoHS, etc.)"
+        },
+        "sustainability": {
+          "$ref": "#/$defs/SustainabilityMetrics"
+        },
+        "warranty": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Warranty"
+          }
+        },
+        "offers": {
+          "$ref": "#/$defs/Offer",
+          "description": "Pricing and availability"
+        },
+        "image": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ImageObject"
+          }
+        },
+        "subjectOf": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/DigitalDocument"
+          },
+          "description": "Related documents"
+        }
+      }
+    },
+    "ItemCondition": {
+      "type": "object",
+      "required": ["@type", "name", "additionalProperty"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "OfferItemCondition"
+        },
+        "name": {
+          "type": "string",
+          "enum": ["NewCondition", "UsedCondition", "RefurbishedCondition", "DamagedCondition"]
+        },
+        "additionalProperty": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PropertyValue"
+          },
+          "contains": {
+            "type": "object",
+            "properties": {
+              "propertyID": {
+                "const": "CIRPASSX_CONDITION_GRADE"
+              },
+              "value": {
+                "type": "string",
+                "enum": ["A", "B", "C", "D", "F"]
+              }
+            },
+            "required": ["propertyID", "value"]
+          },
+          "description": "Must include CIRPASSX_CONDITION_GRADE (A-F)"
+        }
+      }
+    },
+    "ConditionAssessment": {
+      "type": "object",
+      "required": ["@type", "datePublished", "author"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "Review"
+        },
+        "datePublished": {
+          "type": "string",
+          "format": "date"
+        },
+        "author": {
+          "$ref": "#/$defs/Organization"
+        },
+        "reviewBody": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "additionalProperty": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PropertyValue"
+          }
+        }
+      }
+    },
+    "RepairabilityScore": {
+      "type": "object",
+      "required": ["@type", "ratingValue", "bestRating", "worstRating"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "AggregateRating"
+        },
+        "@id": {
+          "type": "string",
+          "format": "uri"
+        },
+        "ratingValue": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "bestRating": {
+          "type": "number",
+          "const": 10
+        },
+        "worstRating": {
+          "type": "number",
+          "const": 0
+        },
+        "ratingExplanation": {
+          "type": "string"
+        },
+        "additionalProperty": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PropertyValue"
+          },
+          "description": "Subscores: DISASSEMBLY_EASE, SPARE_PARTS_AVAILABILITY, REPAIR_DOCUMENTATION, PARTS_PAIRING, RESET_CAPABILITY"
+        }
+      }
+    },
+    "RepairInformation": {
+      "type": "object",
+      "required": ["@type", "name"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "HowTo"
+        },
+        "name": {
+          "type": "string"
+        },
+        "about": {
+          "type": "object",
+          "properties": {
+            "@id": {
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        },
+        "estimatedCost": {
+          "$ref": "#/$defs/MonetaryAmount"
+        },
+        "supply": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/HowToSupply"
+          }
+        },
+        "tool": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/HowToTool"
+          }
+        },
+        "step": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/HowToStep"
+          }
+        },
+        "documentation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/DigitalDocument"
+          }
+        }
+      }
+    },
+    "HowToSupply": {
+      "type": "object",
+      "required": ["@type", "name"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "HowToSupply"
+        },
+        "name": {
+          "type": "string"
+        },
+        "identifier": {
+          "type": "string"
+        },
+        "estimatedCost": {
+          "$ref": "#/$defs/MonetaryAmount"
+        },
+        "additionalProperty": {
+          "$ref": "#/$defs/PropertyValue"
+        }
+      }
+    },
+    "HowToTool": {
+      "type": "object",
+      "required": ["@type", "name"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "HowToTool"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "HowToStep": {
+      "type": "object",
+      "required": ["@type", "position", "name", "text"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "HowToStep"
+        },
+        "position": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "name": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      }
+    },
+    "SparePart": {
+      "type": "object",
+      "required": ["@type", "name"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "Product"
+        },
+        "name": {
+          "type": "string"
+        },
+        "identifier": {
+          "type": "string"
+        },
+        "isAccessoryOrSparePartFor": {
+          "type": "object",
+          "properties": {
+            "@id": {
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        },
+        "offers": {
+          "$ref": "#/$defs/Offer"
+        }
+      }
+    },
+    "LifecycleHistory": {
+      "type": "object",
+      "required": ["@type", "itemListElement"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "ItemList"
+        },
+        "@id": {
+          "type": "string",
+          "format": "uri"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "itemListElement": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LifecycleEvent"
+          }
+        }
+      }
+    },
+    "LifecycleEvent": {
+      "type": "object",
+      "required": ["@type", "startDate", "name"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "Event"
+        },
+        "additionalType": {
+          "type": "string",
+          "format": "uri",
+          "description": "Event type URI from https://cirpassx.org/v1/event/*"
+        },
+        "startDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "name": {
+          "type": "string",
+          "enum": [
+            "Manufacturing",
+            "First Sale",
+            "Installation",
+            "Repair",
+            "Maintenance",
+            "Decommissioning",
+            "Salvage",
+            "Refurbishment Intake",
+            "Quality Assessment",
+            "Resale"
+          ]
+        },
+        "description": {
+          "type": "string"
+        },
+        "location": {
+          "$ref": "#/$defs/Place"
+        },
+        "organizer": {
+          "$ref": "#/$defs/Organization"
+        },
+        "additionalProperty": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/PropertyValue"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/PropertyValue"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "UsageHistory": {
+      "type": "object",
+      "required": ["@type", "propertyID", "value"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "PropertyValue"
+        },
+        "propertyID": {
+          "type": "string",
+          "const": "CIRPASSX_USAGE_METRICS"
+        },
+        "value": {
+          "type": "object",
+          "properties": {
+            "estimatedOperatingHours": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "powerCycles": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "previousOwnerType": {
+              "type": "string",
+              "enum": ["commercial", "residential", "industrial", "public", "unknown"]
+            },
+            "installationType": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "SustainabilityMetrics": {
+      "type": "object",
+      "required": ["@type", "propertyID", "value"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "PropertyValue"
+        },
+        "@id": {
+          "type": "string",
+          "format": "uri"
+        },
+        "propertyID": {
+          "type": "string",
+          "const": "CIRPASSX_SUSTAINABILITY"
+        },
+        "value": {
+          "type": "object",
+          "properties": {
+            "estimatedRemainingLifeYears": {
+              "type": "number",
+              "minimum": 0
+            },
+            "co2SavingsKg": {
+              "type": "number",
+              "minimum": 0
+            },
+            "embodiedCarbonKg": {
+              "type": "number",
+              "minimum": 0
+            },
+            "wasteAvoidedKg": {
+              "type": "number",
+              "minimum": 0
+            },
+            "circularityScore": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "recyclabilityScore": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          }
+        }
+      }
+    },
+    "Material": {
+      "type": "object",
+      "required": ["@type", "name"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "Product"
+        },
+        "name": {
+          "type": "string"
+        },
+        "additionalProperty": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PropertyValue"
+          }
+        }
+      }
+    },
+    "Certification": {
+      "type": "object",
+      "required": ["@type", "name"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "Certification"
+        },
+        "name": {
+          "type": "string"
+        },
+        "certificationStatus": {
+          "type": "string",
+          "enum": ["active", "expired", "revoked"]
+        },
+        "datePublished": {
+          "type": "string",
+          "format": "date"
+        },
+        "issuedBy": {
+          "$ref": "#/$defs/Organization"
+        },
+        "additionalProperty": {
+          "$ref": "#/$defs/PropertyValue"
+        }
+      }
+    },
+    "Warranty": {
+      "type": "object",
+      "required": ["@type", "name"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "WarrantyPromise"
+        },
+        "name": {
+          "type": "string"
+        },
+        "warrantyScope": {
+          "type": "string"
+        },
+        "durationOfWarranty": {
+          "$ref": "#/$defs/QuantitativeValue"
+        },
+        "additionalProperty": {
+          "$ref": "#/$defs/PropertyValue"
+        }
+      }
+    },
+    "Offer": {
+      "type": "object",
+      "required": ["@type", "price", "priceCurrency", "availability"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "Offer"
+        },
+        "price": {
+          "type": "number",
+          "minimum": 0
+        },
+        "priceCurrency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$",
+          "description": "ISO 4217 currency code"
+        },
+        "priceValidUntil": {
+          "type": "string",
+          "format": "date"
+        },
+        "availability": {
+          "type": "string",
+          "format": "uri"
+        },
+        "itemCondition": {
+          "type": "string",
+          "format": "uri"
+        },
+        "seller": {
+          "$ref": "#/$defs/Organization"
+        },
+        "additionalProperty": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PropertyValue"
+          }
+        },
+        "availableDeliveryMethod": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "availableAtOrFrom": {
+          "$ref": "#/$defs/Place"
+        },
+        "deliveryLeadTime": {
+          "$ref": "#/$defs/QuantitativeValue"
+        }
+      }
+    },
+    "CategoryCode": {
+      "type": "object",
+      "required": ["@type", "codeValue", "codingSystem"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "CategoryCode"
+        },
+        "codeValue": {
+          "type": "string"
+        },
+        "codingSystem": {
+          "type": "string",
+          "enum": ["UNSPSC", "ECLASS", "GPC", "HS", "CPV", "CUSTOM"],
+          "description": "Classification system identifier"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "Brand": {
+      "type": "object",
+      "required": ["@type", "name"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "Brand"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "PropertyValue": {
+      "type": "object",
+      "required": ["@type", "propertyID", "value"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "PropertyValue"
+        },
+        "propertyID": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "value": {},
+        "unitCode": {
+          "type": "string",
+          "description": "UN/CEFACT Common Code or custom unit"
+        },
+        "description": {
+          "type": "string"
+        },
+        "valueReference": {
+          "type": "object"
+        }
+      }
+    },
+    "QuantitativeValue": {
+      "type": "object",
+      "required": ["@type", "value", "unitCode"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "QuantitativeValue"
+        },
+        "value": {
+          "type": "number"
+        },
+        "unitCode": {
+          "type": "string",
+          "description": "UN/CEFACT Common Code (KGM, MMT, MTR, etc.)"
+        }
+      }
+    },
+    "MonetaryAmount": {
+      "type": "object",
+      "required": ["@type", "value", "currency"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "MonetaryAmount"
+        },
+        "value": {
+          "type": "number",
+          "minimum": 0
+        },
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "PostalAddress": {
+      "type": "object",
+      "required": ["@type", "addressCountry"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "PostalAddress"
+        },
+        "streetAddress": {
+          "type": "string"
+        },
+        "addressLocality": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "addressCountry": {
+          "type": "string",
+          "pattern": "^[A-Z]{2}$",
+          "description": "ISO 3166-1 alpha-2 country code"
+        }
+      }
+    },
+    "Place": {
+      "type": "object",
+      "required": ["@type"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "Place"
+        },
+        "name": {
+          "type": "string"
+        },
+        "address": {
+          "$ref": "#/$defs/PostalAddress"
+        }
+      }
+    },
+    "ImageObject": {
+      "type": "object",
+      "required": ["@type", "contentUrl"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "ImageObject"
+        },
+        "contentUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "name": {
+          "type": "string"
+        },
+        "encodingFormat": {
+          "type": "string"
+        }
+      }
+    },
+    "DigitalDocument": {
+      "type": "object",
+      "required": ["@type", "name", "url"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "DigitalDocument"
+        },
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "encodingFormat": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

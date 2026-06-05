@@ -1,0 +1,142 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://schema.org/",
+
+    "cirpassx": "https://cirpassx.org/v1/",
+    "untp": "https://vocabulary.uncefact.org/untp/",
+    "epcis": "urn:epcglobal:cbv:bizstep:",
+    "gs1": "https://id.gs1.org/",
+
+    "CircularProductPassport": "cirpassx:CircularProductPassport",
+    "DigitalProductPassport": "untp:DigitalProductPassport",
+
+    "CIRPASSX_ID": "cirpassx:identifier",
+    "CIRPASSX_CONDITION_GRADE": "cirpassx:conditionGrade",
+    "CIRPASSX_USAGE_METRICS": "cirpassx:usageMetrics",
+    "CIRPASSX_SUSTAINABILITY": "cirpassx:sustainability",
+
+    "conditionGrade": {
+      "@id": "cirpassx:conditionGrade",
+      "@type": "@vocab",
+      "@context": {
+        "A": "cirpassx:condition/excellent",
+        "B": "cirpassx:condition/veryGood",
+        "C": "cirpassx:condition/good",
+        "D": "cirpassx:condition/fair",
+        "F": "cirpassx:condition/forParts"
+      }
+    },
+
+    "repairabilityScore": {
+      "@id": "cirpassx:repairabilityScore",
+      "@type": "AggregateRating"
+    },
+
+    "DISASSEMBLY_EASE": "cirpassx:repairability/disassemblyEase",
+    "SPARE_PARTS_AVAILABILITY": "cirpassx:repairability/sparePartsAvailability",
+    "REPAIR_DOCUMENTATION": "cirpassx:repairability/repairDocumentation",
+    "PARTS_PAIRING": "cirpassx:repairability/partsPairing",
+    "RESET_CAPABILITY": "cirpassx:repairability/resetCapability",
+
+    "lifecycleHistory": {
+      "@id": "cirpassx:lifecycleHistory",
+      "@type": "ItemList"
+    },
+
+    "manufacturing": "cirpassx:event/manufacturing",
+    "firstSale": "cirpassx:event/firstSale",
+    "installation": "cirpassx:event/installation",
+    "repair": "cirpassx:event/repair",
+    "maintenance": "cirpassx:event/maintenance",
+    "decommissioning": "cirpassx:event/decommissioning",
+    "salvage": "cirpassx:event/salvage",
+    "intake": "cirpassx:event/intake",
+    "assessment": "cirpassx:event/assessment",
+    "resale": "cirpassx:event/resale",
+
+    "EPCIS_BIZ_STEP": {
+      "@id": "epcis:bizStep",
+      "@type": "@id"
+    },
+
+    "GTIN": "gs1:01",
+    "GS1_DIGITAL_LINK": "gs1:digitalLink",
+    "SERIAL_NUMBER": "gs1:21",
+    "GLN": "gs1:gln",
+
+    "UNSPSC": "https://www.unspsc.org/",
+    "ECLASS": "https://www.eclass.eu/",
+    "GPC": "https://www.gs1.org/standards/gpc",
+    "HS": "https://www.wcoomd.org/en/topics/nomenclature/overview.aspx",
+    "CPV": "https://simap.ted.europa.eu/cpv",
+
+    "estimatedRemainingLifeYears": {
+      "@id": "cirpassx:sustainability/remainingLife",
+      "@type": "xsd:decimal"
+    },
+    "co2SavingsKg": {
+      "@id": "cirpassx:sustainability/co2Savings",
+      "@type": "xsd:decimal"
+    },
+    "embodiedCarbonKg": {
+      "@id": "cirpassx:sustainability/embodiedCarbon",
+      "@type": "xsd:decimal"
+    },
+    "wasteAvoidedKg": {
+      "@id": "cirpassx:sustainability/wasteAvoided",
+      "@type": "xsd:decimal"
+    },
+    "circularityScore": {
+      "@id": "cirpassx:sustainability/circularityScore",
+      "@type": "xsd:decimal"
+    },
+    "recyclabilityScore": {
+      "@id": "cirpassx:sustainability/recyclabilityScore",
+      "@type": "xsd:decimal"
+    },
+
+    "MASS_FRACTION": {
+      "@id": "cirpassx:material/massFraction",
+      "@type": "xsd:decimal"
+    },
+    "RECYCLED_CONTENT": {
+      "@id": "cirpassx:material/recycledContent",
+      "@type": "xsd:decimal"
+    },
+
+    "ORIGINAL_RETAIL_PRICE": "cirpassx:pricing/originalRetailPrice",
+    "SAVINGS_PERCENT": "cirpassx:pricing/savingsPercent",
+    "VAT_INCLUDED": "cirpassx:pricing/vatIncluded",
+    "VAT_RATE": "cirpassx:pricing/vatRate",
+
+    "estimatedOperatingHours": {
+      "@id": "cirpassx:usage/operatingHours",
+      "@type": "xsd:integer"
+    },
+    "powerCycles": {
+      "@id": "cirpassx:usage/powerCycles",
+      "@type": "xsd:integer"
+    },
+    "previousOwnerType": "cirpassx:usage/previousOwnerType",
+    "installationType": "cirpassx:usage/installationType",
+
+    "AVAILABILITY_YEARS": {
+      "@id": "cirpassx:spareParts/availabilityYears",
+      "@type": "xsd:integer"
+    },
+
+    "KGM": "http://qudt.org/vocab/unit/KiloGM",
+    "MMT": "http://qudt.org/vocab/unit/MilliM",
+    "MTR": "http://qudt.org/vocab/unit/M",
+    "WTT": "http://qudt.org/vocab/unit/W",
+    "LUM": "http://qudt.org/vocab/unit/LM",
+    "KEL": "http://qudt.org/vocab/unit/K",
+    "VLT": "http://qudt.org/vocab/unit/V",
+    "MON": "http://qudt.org/vocab/unit/MO",
+    "DAY": "http://qudt.org/vocab/unit/DAY",
+    "P1": "http://qudt.org/vocab/unit/PERCENT",
+
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  }
+}

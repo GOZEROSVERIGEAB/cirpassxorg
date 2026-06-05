@@ -1,0 +1,651 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://schema.org/",
+    "https://vocabulary.uncefact.org/untp/",
+    "https://cirpassx.org/v1/context.jsonld"
+  ],
+  "type": ["VerifiableCredential", "DigitalProductPassport", "CircularProductPassport"],
+  "id": "urn:uuid:550e8400-e29b-41d4-a716-446655440000",
+
+  "issuer": {
+    "@type": "Organization",
+    "id": "did:web:example-reuse-shop.com",
+    "name": "Example Reuse Shop AB",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "GLN",
+      "value": "7350123456789"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "SE"
+    }
+  },
+
+  "issuanceDate": "2026-06-05T10:00:00Z",
+  "validFrom": "2026-06-05T10:00:00Z",
+  "validUntil": "2028-06-05T10:00:00Z",
+
+  "credentialSubject": {
+    "@type": "Product",
+    "id": "urn:uuid:550e8400-e29b-41d4-a716-446655440000",
+
+    "identifier": [
+      {
+        "@type": "PropertyValue",
+        "propertyID": "CIRPASSX_ID",
+        "value": "550e8400-e29b-41d4-a716-446655440000"
+      },
+      {
+        "@type": "PropertyValue",
+        "propertyID": "GTIN",
+        "value": "07350123456789"
+      },
+      {
+        "@type": "PropertyValue",
+        "propertyID": "GS1_DIGITAL_LINK",
+        "value": "https://id.gs1.org/01/07350123456789/21/ABC123"
+      },
+      {
+        "@type": "PropertyValue",
+        "propertyID": "SERIAL_NUMBER",
+        "value": "SN-2019-ABC123"
+      }
+    ],
+
+    "name": "LED Panel Light 60x60",
+    "description": "Professional LED panel for suspended ceilings, 40W, 4000K neutral white",
+    "brand": {
+      "@type": "Brand",
+      "name": "Philips"
+    },
+    "model": "CoreLine RC125B",
+    "manufacturer": {
+      "@type": "Organization",
+      "name": "Signify Netherlands B.V.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "NL"
+      }
+    },
+    "productionDate": "2019-03-15",
+
+    "category": [
+      {
+        "@type": "CategoryCode",
+        "codeValue": "39111610",
+        "codingSystem": "UNSPSC",
+        "name": "Fluorescent luminaires"
+      },
+      {
+        "@type": "CategoryCode",
+        "codeValue": "27-27-25-04",
+        "codingSystem": "ECLASS",
+        "name": "LED luminaire"
+      }
+    ],
+
+    "itemCondition": {
+      "@type": "OfferItemCondition",
+      "name": "UsedCondition",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "propertyID": "CIRPASSX_CONDITION_GRADE",
+          "name": "Condition Grade",
+          "value": "B",
+          "valueReference": {
+            "@type": "DefinedTermSet",
+            "@id": "https://cirpassx.org/v1/condition-scale",
+            "name": "CIRPASSX Condition Scale"
+          }
+        },
+        {
+          "@type": "PropertyValue",
+          "propertyID": "FUNCTIONAL_STATUS",
+          "value": "fully_functional"
+        },
+        {
+          "@type": "PropertyValue",
+          "propertyID": "COSMETIC_STATUS",
+          "value": "minor_wear"
+        },
+        {
+          "@type": "PropertyValue",
+          "propertyID": "CONDITION_SCORE",
+          "value": 82,
+          "unitCode": "P1",
+          "description": "Percentage of original condition"
+        }
+      ]
+    },
+
+    "conditionAssessment": {
+      "@type": "Review",
+      "datePublished": "2026-06-01",
+      "author": {
+        "@type": "Organization",
+        "name": "Example Reuse Shop AB"
+      },
+      "reviewBody": "Minor scratches on frame, LED module and driver fully functional. Electrical safety test passed."
+    },
+
+    "repairabilityScore": {
+      "@type": "AggregateRating",
+      "@id": "https://cirpassx.org/v1/repairability-score",
+      "ratingValue": 7.2,
+      "bestRating": 10,
+      "worstRating": 0,
+      "ratingExplanation": "EN45554 compliant assessment",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "propertyID": "SCORING_STANDARD",
+          "value": "EN45554:2020"
+        },
+        {
+          "@type": "PropertyValue",
+          "propertyID": "DISASSEMBLY_EASE",
+          "value": 8,
+          "description": "Standard tools, no adhesive"
+        },
+        {
+          "@type": "PropertyValue",
+          "propertyID": "SPARE_PARTS_AVAILABILITY",
+          "value": 7,
+          "description": "LED modules and drivers available"
+        },
+        {
+          "@type": "PropertyValue",
+          "propertyID": "REPAIR_DOCUMENTATION",
+          "value": 6,
+          "description": "Service manual available online"
+        },
+        {
+          "@type": "PropertyValue",
+          "propertyID": "PARTS_PAIRING",
+          "value": 9,
+          "description": "No software locks or serial pairing"
+        },
+        {
+          "@type": "PropertyValue",
+          "propertyID": "RESET_CAPABILITY",
+          "value": 8,
+          "description": "Can be factory reset via switch"
+        }
+      ]
+    },
+
+    "repairInformation": {
+      "@type": "HowTo",
+      "name": "Repair Information Package",
+      "about": {
+        "@id": "urn:uuid:550e8400-e29b-41d4-a716-446655440000"
+      },
+      "estimatedCost": {
+        "@type": "MonetaryAmount",
+        "value": 150,
+        "currency": "EUR",
+        "description": "Estimated average repair cost"
+      },
+      "supply": [
+        {
+          "@type": "HowToSupply",
+          "name": "LED Driver",
+          "identifier": "RC125B-DRIVER-01",
+          "estimatedCost": {
+            "@type": "MonetaryAmount",
+            "value": 45,
+            "currency": "EUR"
+          },
+          "additionalProperty": {
+            "@type": "PropertyValue",
+            "propertyID": "AVAILABILITY_YEARS",
+            "value": 7,
+            "description": "Guaranteed availability per EU R2R"
+          }
+        },
+        {
+          "@type": "HowToSupply",
+          "name": "LED Module",
+          "identifier": "RC125B-LED-40W",
+          "estimatedCost": {
+            "@type": "MonetaryAmount",
+            "value": 85,
+            "currency": "EUR"
+          },
+          "additionalProperty": {
+            "@type": "PropertyValue",
+            "propertyID": "AVAILABILITY_YEARS",
+            "value": 7
+          }
+        }
+      ],
+      "tool": [
+        {
+          "@type": "HowToTool",
+          "name": "Phillips screwdriver PH2"
+        },
+        {
+          "@type": "HowToTool",
+          "name": "Multimeter"
+        }
+      ],
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Disconnect power",
+          "text": "Ensure mains power is disconnected before starting"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Remove cover",
+          "text": "Remove 4x PH2 screws to access internal components"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Replace component",
+          "text": "Disconnect faulty component and install replacement"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Test",
+          "text": "Reassemble and test functionality before final installation"
+        }
+      ],
+      "documentation": [
+        {
+          "@type": "DigitalDocument",
+          "name": "Service Manual",
+          "url": "https://docs.signify.com/rc125b-service-manual.pdf",
+          "encodingFormat": "application/pdf"
+        }
+      ]
+    },
+
+    "lifecycleHistory": {
+      "@type": "ItemList",
+      "@id": "https://cirpassx.org/v1/lifecycle-events",
+      "name": "Product Lifecycle Events",
+      "description": "EPCIS 2.0 compatible event history",
+      "itemListElement": [
+        {
+          "@type": "Event",
+          "additionalType": "https://cirpassx.org/v1/event/manufacturing",
+          "startDate": "2019-03-15T08:00:00Z",
+          "name": "Manufacturing",
+          "description": "Product manufactured",
+          "location": {
+            "@type": "Place",
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "NL"
+            }
+          },
+          "organizer": {
+            "@type": "Organization",
+            "name": "Signify Netherlands B.V."
+          },
+          "additionalProperty": {
+            "@type": "PropertyValue",
+            "propertyID": "EPCIS_BIZ_STEP",
+            "value": "urn:epcglobal:cbv:bizstep:commissioning"
+          }
+        },
+        {
+          "@type": "Event",
+          "additionalType": "https://cirpassx.org/v1/event/firstSale",
+          "startDate": "2019-03-20T14:00:00Z",
+          "name": "First Sale",
+          "organizer": {
+            "@type": "Organization",
+            "name": "Ahlsell Sverige AB"
+          },
+          "additionalProperty": {
+            "@type": "PropertyValue",
+            "propertyID": "EPCIS_BIZ_STEP",
+            "value": "urn:epcglobal:cbv:bizstep:retail_selling"
+          }
+        },
+        {
+          "@type": "Event",
+          "additionalType": "https://cirpassx.org/v1/event/repair",
+          "startDate": "2022-06-10T10:00:00Z",
+          "name": "Repair",
+          "description": "LED driver replacement",
+          "organizer": {
+            "@type": "Organization",
+            "name": "Fastighetsservice AB"
+          },
+          "additionalProperty": [
+            {
+              "@type": "PropertyValue",
+              "propertyID": "EPCIS_BIZ_STEP",
+              "value": "urn:epcglobal:cbv:bizstep:repairing"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "REPAIR_TYPE",
+              "value": "component_replacement"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "PARTS_REPLACED",
+              "value": "LED Driver"
+            }
+          ]
+        },
+        {
+          "@type": "Event",
+          "additionalType": "https://cirpassx.org/v1/event/salvage",
+          "startDate": "2026-05-15T09:00:00Z",
+          "name": "Salvage",
+          "description": "Recovered from office demolition project",
+          "location": {
+            "@type": "Place",
+            "name": "Vasagatan 10",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Vasagatan 10",
+              "addressLocality": "Stockholm",
+              "postalCode": "111 20",
+              "addressCountry": "SE"
+            }
+          },
+          "organizer": {
+            "@type": "Organization",
+            "name": "Rivningsentreprenören AB"
+          },
+          "additionalProperty": [
+            {
+              "@type": "PropertyValue",
+              "propertyID": "EPCIS_BIZ_STEP",
+              "value": "urn:epcglobal:cbv:bizstep:decommissioning"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SOURCE_TYPE",
+              "value": "demolition_salvage"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "PREVIOUS_USE_YEARS",
+              "value": 5
+            }
+          ]
+        },
+        {
+          "@type": "Event",
+          "additionalType": "https://cirpassx.org/v1/event/intake",
+          "startDate": "2026-05-20T11:00:00Z",
+          "name": "Refurbishment Intake",
+          "organizer": {
+            "@type": "Organization",
+            "name": "Example Reuse Shop AB"
+          },
+          "additionalProperty": {
+            "@type": "PropertyValue",
+            "propertyID": "EPCIS_BIZ_STEP",
+            "value": "urn:epcglobal:cbv:bizstep:inspecting"
+          }
+        },
+        {
+          "@type": "Event",
+          "additionalType": "https://cirpassx.org/v1/event/assessment",
+          "startDate": "2026-06-01T14:00:00Z",
+          "name": "Quality Assessment",
+          "description": "Condition graded as B, electrical safety verified",
+          "organizer": {
+            "@type": "Organization",
+            "name": "Example Reuse Shop AB"
+          },
+          "additionalProperty": [
+            {
+              "@type": "PropertyValue",
+              "propertyID": "EPCIS_BIZ_STEP",
+              "value": "urn:epcglobal:cbv:bizstep:inspecting"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "CONDITION_GRADE_ASSIGNED",
+              "value": "B"
+            }
+          ]
+        }
+      ]
+    },
+
+    "usageHistory": {
+      "@type": "PropertyValue",
+      "propertyID": "CIRPASSX_USAGE_METRICS",
+      "value": {
+        "estimatedOperatingHours": 12000,
+        "powerCycles": 2500,
+        "previousOwnerType": "commercial",
+        "installationType": "suspended_ceiling"
+      }
+    },
+
+    "weight": {
+      "@type": "QuantitativeValue",
+      "value": 3.2,
+      "unitCode": "KGM"
+    },
+    "width": {
+      "@type": "QuantitativeValue",
+      "value": 600,
+      "unitCode": "MMT"
+    },
+    "height": {
+      "@type": "QuantitativeValue",
+      "value": 50,
+      "unitCode": "MMT"
+    },
+    "depth": {
+      "@type": "QuantitativeValue",
+      "value": 600,
+      "unitCode": "MMT"
+    },
+
+    "additionalProperty": [
+      {
+        "@type": "PropertyValue",
+        "propertyID": "POWER_CONSUMPTION",
+        "name": "Power",
+        "value": 40,
+        "unitCode": "WTT"
+      },
+      {
+        "@type": "PropertyValue",
+        "propertyID": "LUMINOUS_FLUX",
+        "name": "Luminous Flux",
+        "value": 4000,
+        "unitCode": "LUM"
+      },
+      {
+        "@type": "PropertyValue",
+        "propertyID": "COLOR_TEMPERATURE",
+        "name": "Color Temperature",
+        "value": 4000,
+        "unitCode": "KEL"
+      },
+      {
+        "@type": "PropertyValue",
+        "propertyID": "DIMMABLE",
+        "name": "Dimmable",
+        "value": "DALI"
+      },
+      {
+        "@type": "PropertyValue",
+        "propertyID": "IP_RATING",
+        "name": "IP Rating",
+        "value": "IP20"
+      }
+    ],
+
+    "material": [
+      {
+        "@type": "Product",
+        "name": "Aluminium",
+        "additionalProperty": [
+          {
+            "@type": "PropertyValue",
+            "propertyID": "MASS_FRACTION",
+            "value": 0.45
+          },
+          {
+            "@type": "PropertyValue",
+            "propertyID": "RECYCLED_CONTENT",
+            "value": 0.30
+          }
+        ]
+      },
+      {
+        "@type": "Product",
+        "name": "PMMA (Acrylic)",
+        "additionalProperty": [
+          {
+            "@type": "PropertyValue",
+            "propertyID": "MASS_FRACTION",
+            "value": 0.25
+          },
+          {
+            "@type": "PropertyValue",
+            "propertyID": "RECYCLED_CONTENT",
+            "value": 0.0
+          }
+        ]
+      },
+      {
+        "@type": "Product",
+        "name": "Steel",
+        "additionalProperty": [
+          {
+            "@type": "PropertyValue",
+            "propertyID": "MASS_FRACTION",
+            "value": 0.20
+          },
+          {
+            "@type": "PropertyValue",
+            "propertyID": "RECYCLED_CONTENT",
+            "value": 0.60
+          }
+        ]
+      },
+      {
+        "@type": "Product",
+        "name": "Electronics",
+        "additionalProperty": [
+          {
+            "@type": "PropertyValue",
+            "propertyID": "MASS_FRACTION",
+            "value": 0.10
+          }
+        ]
+      }
+    ],
+
+    "hasCertification": [
+      {
+        "@type": "Certification",
+        "name": "CE Marking",
+        "certificationStatus": "active"
+      },
+      {
+        "@type": "Certification",
+        "name": "RoHS Compliant",
+        "certificationStatus": "active"
+      },
+      {
+        "@type": "Certification",
+        "name": "Electrical Safety Verified",
+        "certificationStatus": "active",
+        "datePublished": "2026-05-25",
+        "issuedBy": {
+          "@type": "Organization",
+          "name": "Elektriker El AB"
+        }
+      }
+    ],
+
+    "sustainability": {
+      "@type": "PropertyValue",
+      "@id": "https://cirpassx.org/v1/sustainability-metrics",
+      "propertyID": "CIRPASSX_SUSTAINABILITY",
+      "value": {
+        "estimatedRemainingLifeYears": 10,
+        "co2SavingsKg": 45,
+        "embodiedCarbonKg": 12.5,
+        "wasteAvoidedKg": 3.2,
+        "circularityScore": 0.85,
+        "recyclabilityScore": 0.70
+      }
+    },
+
+    "warranty": [
+      {
+        "@type": "WarrantyPromise",
+        "name": "Secondhand Seller Warranty",
+        "warrantyScope": "Functionality guarantee",
+        "durationOfWarranty": {
+          "@type": "QuantitativeValue",
+          "value": 6,
+          "unitCode": "MON"
+        }
+      }
+    ],
+
+    "offers": {
+      "@type": "Offer",
+      "price": 450,
+      "priceCurrency": "SEK",
+      "priceValidUntil": "2026-12-31",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/UsedCondition",
+      "seller": {
+        "@type": "Organization",
+        "name": "Example Reuse Shop AB"
+      },
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "propertyID": "ORIGINAL_RETAIL_PRICE",
+          "value": 1850,
+          "unitCode": "SEK"
+        },
+        {
+          "@type": "PropertyValue",
+          "propertyID": "SAVINGS_PERCENT",
+          "value": 76
+        }
+      ],
+      "availableDeliveryMethod": [
+        "http://purl.org/goodrelations/v1#DeliveryModePickUp",
+        "http://purl.org/goodrelations/v1#DeliveryModeFreight"
+      ],
+      "availableAtOrFrom": {
+        "@type": "Place",
+        "name": "Main Warehouse Stockholm",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Stockholm",
+          "addressCountry": "SE"
+        }
+      }
+    },
+
+    "image": [
+      {
+        "@type": "ImageObject",
+        "contentUrl": "https://cdn.example.com/products/lamp-001-front.jpg",
+        "name": "Front view",
+        "encodingFormat": "image/jpeg"
+      }
+    ]
+  }
+}

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Accessibility Statement for CIRPASSX - Our commitment to digital accessibility and WCAG 2.1 AA compliance.">
+    <title>Accessibility Statement - CIRPASSX</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --color-primary: #1a5235;
+            --color-primary-dark: #0d3a24;
+            --color-accent: #059669;
+            --color-text: #111827;
+            --color-text-muted: #4b5563;
+            --color-text-inverse: #ffffff;
+            --color-bg: #ffffff;
+            --color-bg-alt: #f9fafb;
+            --color-border: #e5e7eb;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+        body {
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--color-text);
+            background: var(--color-bg);
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            left: 1rem;
+            z-index: 9999;
+            padding: 0.75rem 1.5rem;
+            background: var(--color-primary);
+            color: var(--color-text-inverse);
+            text-decoration: none;
+            border-radius: 0.5rem;
+        }
+        .skip-link:focus { top: 1rem; outline: 3px solid var(--color-accent); }
+        :focus-visible { outline: 3px solid var(--color-accent); outline-offset: 2px; }
+
+        header {
+            background: var(--color-primary);
+            color: var(--color-text-inverse);
+            padding: 2rem 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-text-inverse);
+            text-decoration: none;
+        }
+
+        .logo:hover { opacity: 0.9; }
+
+        .breadcrumb {
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+
+        main {
+            padding: 3rem 0;
+        }
+
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--color-primary);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        p { margin-bottom: 1rem; }
+
+        a {
+            color: var(--color-primary);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        ul, ol {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        li { margin-bottom: 0.5rem; }
+
+        .meta-box {
+            background: var(--color-bg-alt);
+            border: 1px solid var(--color-border);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .meta-box dt {
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-text-muted);
+            margin-top: 0.75rem;
+        }
+
+        .meta-box dt:first-child { margin-top: 0; }
+        .meta-box dd { margin-bottom: 0.5rem; }
+
+        .status-badge {
+            display: inline-block;
+            background: rgba(5, 150, 105, 0.1);
+            color: var(--color-accent);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .contact-box {
+            background: var(--color-bg-alt);
+            border-left: 4px solid var(--color-accent);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+
+        footer {
+            background: var(--color-text);
+            color: var(--color-text-inverse);
+            padding: 2rem 0;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        footer a {
+            color: #10b981;
+        }
+
+        @media (max-width: 640px) {
+            h1 { font-size: 1.75rem; }
+            h2 { font-size: 1.25rem; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header role="banner">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">CIRPASSX</a>
+                <span class="breadcrumb" aria-label="Breadcrumb">/ Accessibility</span>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content" class="container" role="main">
+        <h1>Accessibility Statement</h1>
+
+        <dl class="meta-box">
+            <dt>Organization</dt>
+            <dd>CIRPASSX Open Standard Project</dd>
+            <dt>Website</dt>
+            <dd><a href="https://cirpassx.org">https://cirpassx.org</a></dd>
+            <dt>Compliance Status</dt>
+            <dd><span class="status-badge">WCAG 2.1 Level AA</span></dd>
+            <dt>Last Updated</dt>
+            <dd>June 5, 2026</dd>
+        </dl>
+
+        <h2>Our Commitment</h2>
+        <p>
+            CIRPASSX is committed to ensuring digital accessibility for people with disabilities.
+            We continually improve the user experience for everyone and apply the relevant
+            accessibility standards to ensure we provide equal access to all users.
+        </p>
+
+        <h2>Conformance Status</h2>
+        <p>
+            The <a href="https://www.w3.org/WAI/standards-guidelines/wcag/">Web Content Accessibility Guidelines (WCAG)</a>
+            defines requirements for designers and developers to improve accessibility for people with disabilities.
+            It defines three levels of conformance: Level A, Level AA, and Level AAA.
+        </p>
+        <p>
+            <strong>cirpassx.org is fully conformant with WCAG 2.1 Level AA.</strong>
+            Fully conformant means that the content fully conforms to the accessibility standard
+            without any exceptions.
+        </p>
+
+        <h2>Accessibility Features</h2>
+        <p>This website includes the following accessibility features:</p>
+
+        <h3>Navigation</h3>
+        <ul>
+            <li>Skip navigation link to bypass repetitive content</li>
+            <li>Consistent navigation structure across all pages</li>
+            <li>Logical heading hierarchy (h1-h6)</li>
+            <li>ARIA landmarks for screen reader navigation</li>
+            <li>Focus indicators visible on all interactive elements</li>
+        </ul>
+
+        <h3>Visual Design</h3>
+        <ul>
+            <li>Color contrast ratios meeting WCAG AA standards (minimum 4.5:1 for normal text, 3:1 for large text)</li>
+            <li>Information not conveyed by color alone</li>
+            <li>Responsive design supporting zoom up to 200%</li>
+            <li>Readable font sizes with relative units</li>
+            <li>Sufficient spacing between interactive elements</li>
+        </ul>
+
+        <h3>Content</h3>
+        <ul>
+            <li>Plain language and clear writing</li>
+            <li>Descriptive link text (no "click here" links)</li>
+            <li>Table headers and captions for data tables</li>
+            <li>Alternative text for informative images</li>
+            <li>Code examples with proper syntax highlighting contrast</li>
+        </ul>
+
+        <h3>Interaction</h3>
+        <ul>
+            <li>Full keyboard accessibility</li>
+            <li>No keyboard traps</li>
+            <li>Visible focus states</li>
+            <li>Support for reduced motion preferences</li>
+            <li>No content that flashes more than three times per second</li>
+        </ul>
+
+        <h2>Technologies Used</h2>
+        <p>This website relies on the following technologies for accessibility:</p>
+        <ul>
+            <li>HTML5 semantic elements</li>
+            <li>WAI-ARIA for enhanced accessibility</li>
+            <li>CSS for visual presentation</li>
+            <li>JavaScript (progressive enhancement only)</li>
+        </ul>
+
+        <h2>Compatibility</h2>
+        <p>This website is designed to be compatible with:</p>
+        <ul>
+            <li>Recent versions of major browsers (Chrome, Firefox, Safari, Edge)</li>
+            <li>Screen readers (NVDA, JAWS, VoiceOver, TalkBack)</li>
+            <li>Screen magnification software</li>
+            <li>Speech recognition software</li>
+            <li>Keyboard-only navigation</li>
+        </ul>
+
+        <h2>Known Limitations</h2>
+        <p>
+            While we strive for full accessibility, some limitations may exist:
+        </p>
+        <ul>
+            <li>
+                <strong>JSON/Code examples:</strong> Long code blocks may require horizontal
+                scrolling on smaller screens. We provide downloadable versions as alternatives.
+            </li>
+            <li>
+                <strong>External links:</strong> Links to external resources (GitHub, standards
+                bodies) may lead to sites with different accessibility levels.
+            </li>
+        </ul>
+
+        <h2>Feedback</h2>
+        <p>
+            We welcome your feedback on the accessibility of cirpassx.org. If you encounter
+            accessibility barriers or have suggestions for improvement, please contact us.
+        </p>
+
+        <div class="contact-box">
+            <h3>Contact Information</h3>
+            <p>
+                <strong>Email:</strong> <a href="mailto:accessibility@cirpassx.org">accessibility@cirpassx.org</a><br>
+                <strong>Response time:</strong> We aim to respond within 5 business days.
+            </p>
+        </div>
+
+        <h2>Enforcement Procedure</h2>
+        <p>
+            If you are not satisfied with our response to your accessibility concern, you may
+            escalate the issue to your national enforcement body. In Sweden, this is the
+            <a href="https://www.digg.se/en">Agency for Digital Government (DIGG)</a>.
+        </p>
+
+        <h2>Technical Specifications</h2>
+        <p>
+            Accessibility of cirpassx.org relies on the following technologies to work with
+            the particular combination of web browser and any assistive technologies or
+            plugins installed on your computer:
+        </p>
+        <ul>
+            <li>HTML</li>
+            <li>WAI-ARIA</li>
+            <li>CSS</li>
+        </ul>
+        <p>
+            These technologies are relied upon for conformance with the accessibility
+            standards used.
+        </p>
+
+        <h2>Assessment Approach</h2>
+        <p>CIRPASSX assessed the accessibility of this website by the following approaches:</p>
+        <ul>
+            <li>Self-evaluation using WCAG 2.1 guidelines</li>
+            <li>Automated testing with accessibility tools (axe, WAVE)</li>
+            <li>Manual testing with keyboard navigation</li>
+            <li>Testing with screen readers (VoiceOver, NVDA)</li>
+        </ul>
+
+        <h2>Applicable Standards</h2>
+        <p>This statement applies to compliance with:</p>
+        <ul>
+            <li><a href="https://www.w3.org/TR/WCAG21/">WCAG 2.1 Level AA</a></li>
+            <li><a href="https://eur-lex.europa.eu/eli/dir/2016/2102/oj">EU Web Accessibility Directive (2016/2102)</a></li>
+            <li><a href="https://www.etsi.org/deliver/etsi_en/301500_301599/301549/">EN 301 549 v3.2.1</a></li>
+            <li><a href="https://eur-lex.europa.eu/eli/dir/2019/882/oj">European Accessibility Act (2019/882)</a></li>
+        </ul>
+
+    </main>
+
+    <footer role="contentinfo">
+        <div class="container">
+            <p>
+                <a href="index.html">CIRPASSX</a> - Circular Product Passport Exchange Standard<br>
+                <a href="specification.html">Specification</a> &middot;
+                <a href="mailto:contact@cirpassx.org">Contact</a>
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
